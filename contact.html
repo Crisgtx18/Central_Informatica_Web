@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato | Central Informática</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Central<span>Informática</span></a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Início</a>
+        <a href="store.html">Loja</a>
+        <a href="services.html">Serviços</a>
+        <a href="quote.html">Orçamento</a>
+        <a href="contact.html" class="active">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btn-cart" class="btn btn-cart" type="button">🛒 Carrinho <span id="cart-count" class="cart-count">0</span></button>
+        <button id="btn-menu" class="btn-menu" type="button" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section cotiza">
+      <div>
+        <h2>Contato</h2>
+        <p class="muted">Visite-nos ou fale conosco. Aqui colocaremos seu número real depois.</p>
+        <div class="grid" style="margin-top:16px">
+          <article class="card"><div class="icon">📍</div><h3>Endereço</h3><p class="muted">Sua rua, número, bairro e cidade aqui.</p></article>
+          <article class="card"><div class="icon">🕒</div><h3>Horário</h3><p class="muted">Seg–Sáb 10h–19h<br/>Dom fechado</p></article>
+          <article class="card"><div class="icon">📱</div><h3>WhatsApp</h3><p class="muted">Pendente — configurado em <code>app.js</code> como WHATSAPP_NUMBER.</p><a href="quote.html" class="btn btn-primary">Testar orçamento</a></article>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>✏️ Tarefa para você</h3>
+        <p>Me passe seu endereço e telefone e coloco nas 5 páginas de uma vez.</p>
+      </div>
+    </section>
+  </main>
+
+  <aside id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-head"><h3>Seu carrinho</h3><button id="btn-close-cart" class="btn-menu" type="button" style="display:block">✕</button></div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-foot">
+      <p>Total: <strong id="cart-total">R$0</strong></p>
+      <button id="btn-clear" class="btn btn-outline" type="button">Esvaziar</button>
+      <button id="btn-order" class="btn btn-primary" type="button">Pedir pelo WhatsApp</button>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay hidden"></div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>Central Informática</strong><p class="muted">Venda e reparo • Magenta e Preto</p></div>
+      <div><p>📍 Seu endereço aqui<br/>🕒 Seg–Sáb 10h–19h</p></div>
+    </div>
+  </footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>

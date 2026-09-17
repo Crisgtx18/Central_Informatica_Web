@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serviços | Central Informática</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Central<span>Informática</span></a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Início</a>
+        <a href="store.html">Loja</a>
+        <a href="services.html" class="active">Serviços</a>
+        <a href="quote.html">Orçamento</a>
+        <a href="contact.html">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btn-cart" class="btn btn-cart" type="button">🛒 Carrinho <span id="cart-count" class="cart-count">0</span></button>
+        <button id="btn-menu" class="btn-menu" type="button" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Serviços de reparo e manutenção</h2>
+      <p class="muted">Preços base. Peça seu orçamento exato na página de orçamento.</p>
+      <div class="grid services">
+        <article class="card"><div class="icon">💻</div><h3>Notebooks e computadores</h3><ul><li>Limpeza e pasta térmica</li><li>Troca para SSD / RAM</li><li>Formatação e sistema operacional</li></ul><p class="price">Desde R$250</p><a href="quote.html" class="btn btn-primary">Solicitar</a></article>
+        <article class="card"><div class="icon">📱</div><h3>Celulares</h3><ul><li>Troca de tela e bateria</li><li>Conector de carga</li><li>Software e desbloqueio</li></ul><p class="price">Desde R$200</p><a href="quote.html" class="btn btn-primary">Solicitar</a></article>
+        <article class="card"><div class="icon">🎮</div><h3>Placas de vídeo</h3><ul><li>Manutenção e thermal pads</li><li>Reballing / diagnóstico</li><li>Teste de estresse</li></ul><p class="price">Desde R$400</p><a href="quote.html" class="btn btn-primary">Solicitar</a></article>
+        <article class="card"><div class="icon">🔧</div><h3>Componentes eletrônicos</h3><ul><li>Soldagem e placas</li><li>Arduino / projetos maker</li><li>Venda de peças</li></ul><p class="price">Orçamento grátis</p><a href="quote.html" class="btn btn-primary">Solicitar</a></article>
+      </div>
+    </section>
+  </main>
+
+  <aside id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-head"><h3>Seu carrinho</h3><button id="btn-close-cart" class="btn-menu" type="button" style="display:block">✕</button></div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-foot">
+      <p>Total: <strong id="cart-total">R$0</strong></p>
+      <button id="btn-clear" class="btn btn-outline" type="button">Esvaziar</button>
+      <button id="btn-order" class="btn btn-primary" type="button">Pedir pelo WhatsApp</button>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay hidden"></div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>Central Informática</strong><p class="muted">Venda e reparo • Magenta e Preto</p></div>
+      <div><p>📍 Seu endereço aqui<br/>🕒 Seg–Sáb 10h–19h</p></div>
+    </div>
+  </footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>

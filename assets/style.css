@@ -1,0 +1,81 @@
+/* Central Informatica - very simple CSS */
+
+body {
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.container { padding: 0 15px; }
+.muted { color: #bbb; }
+.hidden { display: none; }
+.magenta { color: #e6007e; }
+
+/* Buttons */
+.btn {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  background: #e6007e;
+  border-radius: 5px;
+  display: inline-block;
+}
+.btn-outline { background: white; color: #e6007e; }
+
+/* Header */
+.header { background: #111; border-bottom: 3px solid #e6007e; }
+.logo { color: white; text-decoration: none; font-size: 20px; }
+.logo span { color: #e6007e; }
+.nav a { color: white; text-decoration: none; margin-right: 10px; }
+.nav a.active { color: #e6007e; }
+.btn-cart { background: #333; color: white; }
+.cart-count { background: #e6007e; padding: 2px 6px; }
+.btn-menu { display: none; }
+
+/* Hero */
+.hero { background: #1a0010; padding: 20px 0; }
+.badge { color: #e6007e; }
+.subtitle { color: #bbb; }
+.hero-card { background: #222; padding: 10px; margin-top: 10px; }
+
+/* Sections and cards */
+.section { padding: 20px 0; }
+.section h2 { color: white; }
+.card {
+  background: #222;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #444;
+}
+.price { color: #e6007e; font-weight: bold; }
+.stock { color: #bbb; font-size: 13px; }
+
+/* Store */
+.toolbar input { width: 90%; padding: 8px; margin: 10px 0; }
+.chip { padding: 5px 10px; margin: 2px; background: #333; color: white; }
+.chip.active { background: #e6007e; }
+
+/* Form */
+.form input, .form select, .form textarea { width: 90%; padding: 8px; margin: 5px 0; }
+
+/* Cart */
+.cart-panel {
+  background: #111;
+  border: 2px solid #e6007e;
+  padding: 10px;
+  display: none;
+}
+.cart-panel.open { display: block; }
+.cart-item { background: #333; padding: 5px; margin: 5px 0; }
+.overlay { background: rgba(0,0,0,0.5); }
+
+/* Footer */
+.footer { background: #111; border-top: 3px solid #e6007e; padding: 15px 0; }
+
+/* Mobile only */
+@media (max-width: 768px) {
+  .nav { display: none; }
+  .nav.open { display: block; }
+  .btn-menu { display: inline; color: white; background: none; border: none; font-size: 20px; }
+}

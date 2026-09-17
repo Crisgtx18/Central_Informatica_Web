@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orçamento | Central Informática</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Central<span>Informática</span></a>
+      <nav class="nav" id="nav">
+        <a href="index.html">Início</a>
+        <a href="store.html">Loja</a>
+        <a href="services.html">Serviços</a>
+        <a href="quote.html" class="active">Orçamento</a>
+        <a href="contact.html">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <button id="btn-cart" class="btn btn-cart" type="button">🛒 Carrinho <span id="cart-count" class="cart-count">0</span></button>
+        <button id="btn-menu" class="btn-menu" type="button" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section cotiza">
+      <div>
+        <h2>Peça seu orçamento</h2>
+        <p class="muted">Preencha e montamos a mensagem para o WhatsApp automaticamente.</p>
+        <form id="quote-form" class="form">
+          <label>Seu nome<input id="customer-name" required placeholder="Ex. Ana Souza" /></label>
+          <label>Seu aparelho
+            <select id="device-type">
+              <option>Notebook</option><option>Celular</option>
+              <option>Computador desktop</option>
+              <option>Placa de vídeo</option><option>Outro</option>
+            </select>
+          </label>
+          <label>Qual é o defeito?<textarea id="issue-desc" rows="3" required placeholder="Ex. Não liga, esquenta muito..."></textarea></label>
+          <button class="btn btn-primary" type="submit">Enviar pelo WhatsApp</button>
+        </form>
+      </div>
+      <div class="hero-card">
+        <h3>💡 Como funciona</h3>
+        <p>1. Você escreve o defeito<br/>2. Abre o WhatsApp com o texto pronto<br/>3. Só coloque seu número em <code>app.js</code></p>
+        <p class="muted">Procure por <code>WHATSAPP_NUMBER</code> no código.</p>
+      </div>
+    </section>
+  </main>
+
+  <aside id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-head"><h3>Seu carrinho</h3><button id="btn-close-cart" class="btn-menu" type="button" style="display:block">✕</button></div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-foot">
+      <p>Total: <strong id="cart-total">R$0</strong></p>
+      <button id="btn-clear" class="btn btn-outline" type="button">Esvaziar</button>
+      <button id="btn-order" class="btn btn-primary" type="button">Pedir pelo WhatsApp</button>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay hidden"></div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>Central Informática</strong><p class="muted">Venda e reparo • Magenta e Preto</p></div>
+      <div><p>📍 Seu endereço aqui<br/>🕒 Seg–Sáb 10h–19h</p></div>
+    </div>
+  </footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>

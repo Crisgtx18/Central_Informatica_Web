@@ -1,0 +1,247 @@
+/* ============================================================
+   CENTRAL INFORMÁTICA - Guía CSS
+   Regla: cada cosa se explica UNA sola vez (primera aparición).
+   Si la ves repetida abajo sin comentario = ya fue explicada.
+   ============================================================ */
+
+:root {
+  --negro: #0a0a0a;           /* fondo principal de la página (body) */
+  --gris-fondo: #111111;      /* variante de negro para secciones alternas (reservado) */
+  --gris-tarjeta: #1a1a1a;    /* fondo de tarjetas, inputs y botones secundarios */
+  --borde: #2a2a2a;           /* color de bordes sutiles sobre fondo oscuro */
+  --magenta: #e6007e;         /* color marca: botones, acentos, precios, bordes activos */
+  --magenta-hover: #b00062;   /* magenta más oscuro para efecto hover */
+  --blanco: #ffffff;          /* texto principal y texto sobre magenta */
+  --gris-texto: #cfcfcf;      /* texto secundario / descripciones apagadas */
+}
+
+/* Reset universal: elimina márgenes por defecto y hace que padding no agrande las cajas */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* body: fuente base, fondo negro y texto blanco. line-height = altura de línea para legibilidad */
+body {
+  background: var(--negro);
+  color: var(--blanco);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+/* .container: centra el contenido y limita el ancho máximo */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+/* .muted: texto gris secundario */
+.muted { color: var(--gris-texto); }
+/* .hidden: oculta por completo (usado con JS para carrito y mensajes) */
+.hidden { display: none !important; }
+/* .magenta: texto color marca */
+.magenta { color: var(--magenta); }
+
+/* .btn: estilo base de todos los botones y enlaces-botón */
+.btn {
+  display: inline-block; /* permite padding y ancho como botón pero en línea */
+  padding: 10px 16px;
+  border-radius: 10px; /* esquinas redondeadas */
+  border: 1px solid transparent;
+  cursor: pointer; /* manita al pasar el mouse */
+  text-decoration: none;
+  font-weight: bold;
+}
+/* .btn-primary: botón principal magenta */
+.btn-primary { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+.btn-primary:hover { background: var(--magenta-hover); }
+/* .btn-outline: botón transparente con borde magenta */
+.btn-outline { background: transparent; color: var(--blanco); border-color: var(--magenta); }
+.btn-outline:hover { background: var(--magenta); }
+
+/* .header: barra superior pegajosa con línea magenta inferior */
+.header {
+  position: sticky; /* se queda fija arriba al hacer scroll */
+  top: 0;
+  z-index: 10; /* capa por encima del contenido */
+  background: #000;
+  border-bottom: 2px solid var(--magenta);
+}
+/* .header-inner: fila Flexbox que reparte logo / nav / carrito */
+.header-inner {
+  display: flex; /* pone hijos en fila */
+  align-items: center; /* centra verticalmente */
+  justify-content: space-between; /* reparte con espacio entre ellos */
+  height: 64px;
+  gap: 12px; /* separación entre hijos */
+}
+/* .logo: marca de texto */
+.logo { color: #fff; text-decoration: none; font-size: 20px; font-weight: 800; }
+.logo span { color: var(--magenta); }
+/* .nav: enlaces en fila */
+.nav { display: flex; gap: 16px; }
+.nav a { color: var(--gris-texto); text-decoration: none; padding: 6px 10px; border-radius: 8px; }
+.nav a:hover { color: var(--magenta); }
+/* .active: marca la página actual en magenta */
+.nav a.active { color: #fff; background: var(--magenta); }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+/* .btn-cart: botón carrito gris oscuro */
+.btn-cart { background: var(--gris-tarjeta); color: #fff; border-color: var(--borde); }
+/* .cart-count: burbuja contadora magenta */
+.cart-count {
+  background: var(--magenta);
+  border-radius: 999px; /* círculo/píldora */
+  padding: 0 8px;
+  margin-left: 6px;
+}
+/* .btn-menu: hamburguesa, oculta en PC */
+.btn-menu { display: none; background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+
+/* .hero: franja de bienvenida con degradado negro → vino */
+.hero {
+  background: linear-gradient(135deg, #000 60%, #3a0024 100%);
+  border-bottom: 1px solid var(--borde);
+  padding: 40px 0;
+}
+/* .hero-inner: dos columnas (texto + tarjeta) */
+.hero-inner {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero h1 { font-size: 38px; margin: 10px 0; }
+.subtitle { color: var(--gris-texto); margin-bottom: 16px; }
+/* .badge: píldora pequeña con borde magenta */
+.badge {
+  display: inline-block;
+  border: 1px solid var(--magenta);
+  color: var(--magenta);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.hero-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+/* .hero-card: tarjeta destacada con acento lateral magenta */
+.hero-card {
+  background: var(--gris-tarjeta);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--magenta);
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 260px;
+}
+.hero-card ul { list-style: none; margin-top: 10px; }
+.hero-card li { margin: 6px 0; }
+
+/* .section: separación vertical entre bloques */
+.section { padding: 36px 0; }
+/* Título de sección con barra lateral magenta */
+.section h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+  border-left: 5px solid var(--magenta);
+  padding-left: 10px;
+}
+/* .toolbar: columna con buscador arriba y filtros abajo */
+.toolbar { display: flex; flex-direction: column; gap: 12px; margin: 18px 0; }
+.toolbar input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+  background: var(--gris-tarjeta);
+  color: #fff;
+}
+/* .filters: fila de chips que se envuelve */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+/* .chip: botón filtro en forma de píldora */
+.chip {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: var(--gris-tarjeta);
+  color: var(--gris-texto);
+  cursor: pointer;
+}
+.chip.active, .chip:hover { background: var(--magenta); color: #fff; border-color: var(--magenta); }
+
+/* .grid: cuadrícula automática responsive para productos */
+.grid {
+  display: grid; /* activa cuadrícula */
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); /* columnas auto según ancho */
+  gap: 16px;
+}
+/* .card: tarjeta de producto/servicio con animación suave */
+.card {
+  background: var(--gris-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  padding: 16px;
+  transition: transform 0.15s, border-color 0.15s; /* anima hover */
+}
+.card:hover { transform: translateY(-4px); border-color: var(--magenta); }
+.card .icon { font-size: 40px; }
+.card h3 { margin: 8px 0; font-size: 17px; }
+.card ul { color: var(--gris-texto); font-size: 14px; margin-left: 18px; }
+/* .price: precio destacado magenta */
+.price { color: var(--magenta); font-weight: 800; margin-top: 10px; font-size: 18px; }
+.card .btn { width: 100%; margin-top: 10px; }
+/* .stock: texto pequeño de categoría/stock */
+.stock { font-size: 13px; color: var(--gris-texto); }
+
+/* .cotiza: 2 columnas (formulario + ayuda) */
+.cotiza { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
+/* .form: columna de campos */
+.form { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+.form label { display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.form input, .form select, .form textarea {
+  padding: 10px; border-radius: 10px;
+  border: 1px solid var(--borde);
+  background: var(--gris-tarjeta); color: #fff;
+}
+/* code: fragmento rosa sobre negro para nombres de código */
+code { background: #000; color: var(--magenta); padding: 2px 6px; border-radius: 6px; }
+
+/* .cart-panel: panel lateral fijo oculto a la derecha */
+.cart-panel {
+  position: fixed; /* fijo en pantalla aunque hagas scroll */
+  top: 0; right: 0;
+  width: 340px; max-width: 90vw; height: 100%;
+  background: #000;
+  border-left: 2px solid var(--magenta);
+  padding: 16px;
+  transform: translateX(105%); /* lo esconde fuera de pantalla */
+  transition: transform 0.25s;
+  z-index: 20;
+  display: flex; flex-direction: column; gap: 12px;
+}
+/* .open: JS la agrega para mostrar el carrito */
+.cart-panel.open { transform: translateX(0); }
+.cart-head { display: flex; justify-content: space-between; align-items: center; }
+.cart-items { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+/* .cart-item: fila de producto dentro del carrito */
+.cart-item {
+  display: flex; justify-content: space-between; gap: 8px;
+  background: var(--gris-tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 10px; padding: 10px;
+}
+.cart-foot { border-top: 1px solid var(--borde); padding-top: 10px; display: flex; flex-direction: column; gap: 8px; }
+/* .overlay: fondo oscuro tras el carrito */
+.overlay {
+  position: fixed; inset: 0; /* cubre toda la pantalla */
+  background: rgba(0,0,0,0.6);
+  z-index: 15;
+}
+/* .footer: cierre negro con línea magenta superior */
+.footer { border-top: 2px solid var(--magenta); background: #000; padding: 24px 0; margin-top: 20px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Media query: reglas solo para pantallas ≤768px (celular) */
+@media (max-width: 768px) {
+  .nav { display: none; }
+  /* .nav.open: menú desplegable vertical (sin re-explicar, ya explicado arriba) */
+  .nav.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: #000; padding: 16px;
+    border-bottom: 2px solid var(--magenta);
+  }
+  .btn-menu { display: block; }
+  .hero-inner { flex-direction: column; align-items: stretch; }
+  .hero h1 { font-size: 28px; }
+  .cotiza { grid-template-columns: 1fr; }
+}
