@@ -1,66 +1,104 @@
-// STEP 1: Put your number here. Example: "5511999999999" (country + number, no + or spaces)
-const WHATSAPP_NUMBER = "";
-
-// STEP 2: Your products. Add more by copying a { ... } block.
-// Note: category keys are code (English). Labels shown on screen are in Portuguese in HTML.
+const WHATSAPP_NUMBER = "5575981942021";
+const EMAIL_CONTACT = "contato@centralinformatica.com.br";
+const CATEGORY_LABELS = {
+  "pc-nuevo": "Componentes PC Nuevos",
+  "pc-usado": "Componentes PC Usados",
+  "cel-nuevo": "Celulares Nuevos",
+  "cel-usado": "Celulares Usados",
+  "componentes": "Componentes",
+  "notebooks": "Notebooks",
+  "all": "Todos"
+};
 const PRODUCTS = [
-  { id: 1, name: "Arduino UNO R3", category: "components", price: 350, stock: 12, icon: "🔌" },
-  { id: 2, name: "Kit Resistores 600 pcs", category: "components", price: 199, stock: 20, icon: "⚡" },
-  { id: 3, name: "Memória RAM 8GB DDR4 Notebook", category: "laptops", price: 650, stock: 8, icon: "💻" },
-  { id: 4, name: "SSD 480GB SATA", category: "laptops", price: 850, stock: 10, icon: "💾" },
-  { id: 5, name: "Tela iPhone 11", category: "phones", price: 900, stock: 5, icon: "📱" },
-  { id: 6, name: "Bateria Samsung A32", category: "phones", price: 450, stock: 7, icon: "🔋" },
-  { id: 7, name: "Placa RTX 3060 12GB", category: "gpu", price: 7500, stock: 3, icon: "🎮" },
-  { id: 8, name: "Pasta térmica + pads GPU", category: "gpu", price: 250, stock: 15, icon: "🌡️" },
-  { id: 9, name: "Ferro de solda + estanho kit", category: "accessories", price: 400, stock: 9, icon: "🔧" },
-  { id: 10, name: "Multímetro digital", category: "accessories", price: 350, stock: 11, icon: "📟" },
-  { id: 11, name: "Carregador universal notebook", category: "laptops", price: 550, stock: 6, icon: "🔌" },
-  { id: 12, name: "Cabo USB-C dados rápidos", category: "accessories", price: 150, stock: 30, icon: "🔗" },
+  { id: 1, name: "Memoria RAM 8GB DDR4 3200MHz Nueva", category: "pc-nuevo", condition: "nuevo", price: 650, stock: 10, icon: "💾" },
+  { id: 2, name: "SSD 480GB SATA Nuevo", category: "pc-nuevo", condition: "nuevo", price: 850, stock: 12, icon: "💽" },
+  { id: 3, name: "Placa RTX 3060 12GB Nueva", category: "pc-nuevo", condition: "nuevo", price: 7500, stock: 3, icon: "🎮" },
+  { id: 4, name: "Fuente 650W 80 Plus Nueva", category: "pc-nuevo", condition: "nuevo", price: 1200, stock: 6, icon: "🔌" },
+  { id: 5, name: "Placa Madre B550 Usada Testeada", category: "pc-usado", condition: "usado", price: 1800, stock: 2, icon: "🖥️" },
+  { id: 6, name: "GTX 1660 Super Usada con Garantia", category: "pc-usado", condition: "usado", price: 3200, stock: 2, icon: "🎮" },
+  { id: 7, name: "Kit RAM 16GB DDR3 Usado", category: "pc-usado", condition: "usado", price: 450, stock: 5, icon: "💾" },
+  { id: 8, name: "Galaxy A32 Nuevo Sellado", category: "cel-nuevo", condition: "nuevo", price: 4500, stock: 4, icon: "📱" },
+  { id: 9, name: "iPhone 11 Nuevo", category: "cel-nuevo", condition: "nuevo", price: 9800, stock: 2, icon: "📱" },
+  { id: 10, name: "Cargador USB-C Nuevo", category: "cel-nuevo", condition: "nuevo", price: 250, stock: 20, icon: "🔗" },
+  { id: 11, name: "Galaxy S21 Usado Muy Buen Estado", category: "cel-usado", condition: "usado", price: 3200, stock: 3, icon: "📱" },
+  { id: 12, name: "iPhone XR Usado con Bateria Nueva", category: "cel-usado", condition: "usado", price: 3800, stock: 2, icon: "📱" },
+  { id: 13, name: "Tela iPhone 11 Repuesto", category: "cel-usado", condition: "usado", price: 900, stock: 5, icon: "📲" },
+  { id: 14, name: "Arduino UNO R3", category: "componentes", condition: "nuevo", price: 350, stock: 12, icon: "🔌" },
+  { id: 15, name: "Kit Resistores 600 pcs", category: "componentes", condition: "nuevo", price: 199, stock: 20, icon: "⚡" },
+  { id: 16, name: "Multimetro Digital", category: "componentes", condition: "nuevo", price: 350, stock: 11, icon: "📟" },
+  { id: 17, name: "Notebook i5 8GB/256GB Reacondicionado", category: "notebooks", condition: "usado", price: 6500, stock: 4, icon: "💻" },
+  { id: 18, name: "Notebook Gamer RTX 3050 Nuevo", category: "notebooks", condition: "nuevo", price: 15500, stock: 2, icon: "💻" },
+  { id: 19, name: "Macbook Air M1 Usado", category: "notebooks", condition: "usado", price: 18000, stock: 1, icon: "🍎" }
 ];
-
 let activeCategory = "all";
 let searchQuery = "";
-// Cart saved in localStorage so it survives page changes
 let cartItems = [];
-try { cartItems = JSON.parse(localStorage.getItem("ci_cart") || "[]"); } catch { cartItems = []; }
-
-// Helper: get element by id, returns null if page has no such element (multi-page)
+try { cartItems = JSON.parse(localStorage.getItem("ci_cart") || "[]"); } catch (e) { cartItems = []; }
 const getById = (id) => document.getElementById(id);
 const productGrid = getById("grid");
+const shopSections = getById("shop-sections");
 const emptyMessage = getById("empty");
 const searchInput = getById("search");
 const cartPanel = getById("cart-panel");
 const pageOverlay = getById("overlay");
-
 function formatMoney(value) { return "R$" + value.toLocaleString("pt-BR"); }
-
+function categoryLabel(key) { return CATEGORY_LABELS[key] || key; }
+function conditionTag(condition) {
+  if (condition === "nuevo") return '<span class="tag tag-nuevo">Nuevo</span>';
+  if (condition === "usado") return '<span class="tag tag-usado">Usado</span>';
+  return "";
+}
+function productCard(product) {
+  const card = document.createElement("article");
+  card.className = "card";
+  card.innerHTML =
+    conditionTag(product.condition) +
+    '<div class="icon">' + product.icon + '</div>' +
+    '<h3>' + product.name + '</h3>' +
+    '<p class="stock">' + categoryLabel(product.category) + ' • estoque: ' + product.stock + '</p>' +
+    '<p class="price">' + formatMoney(product.price) + '</p>' +
+    '<button class="btn btn-primary" type="button">Adicionar 🛒</button>';
+  card.querySelector("button").addEventListener("click", () => addToCart(product.id));
+  return card;
+}
+function matchesSearch(product) {
+  return product.name.toLowerCase().includes(searchQuery.toLowerCase());
+}
 function renderProducts() {
-  if (!productGrid) return; // this page has no store (ex. home, services)
+  if (!productGrid) return;
   productGrid.innerHTML = "";
+  if (shopSections) shopSections.innerHTML = "";
+  const searching = searchQuery.trim() !== "";
+  if (activeCategory === "all" && !searching && shopSections) {
+    productGrid.style.display = "none";
+    if (emptyMessage) emptyMessage.classList.add("hidden");
+    Object.keys(CATEGORY_LABELS).forEach((cat) => {
+      if (cat === "all") return;
+      const list = PRODUCTS.filter((p) => p.category === cat);
+      if (list.length === 0) return;
+      const section = document.createElement("div");
+      section.className = "shop-section";
+      section.innerHTML = '<h3>' + categoryLabel(cat) + '</h3><p>' + list.length + ' productos</p>';
+      const grid = document.createElement("div");
+      grid.className = "grid";
+      list.forEach((product) => grid.appendChild(productCard(product)));
+      section.appendChild(grid);
+      shopSections.appendChild(section);
+    });
+    return;
+  }
+  productGrid.style.display = "";
   const filteredList = PRODUCTS.filter((product) =>
     (activeCategory === "all" || product.category === activeCategory) &&
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    matchesSearch(product)
   );
   if (emptyMessage) emptyMessage.classList.toggle("hidden", filteredList.length > 0);
-  filteredList.forEach((product) => {
-    const card = document.createElement("article");
-    card.className = "card";
-    card.innerHTML = `
-      <div class="icon">${product.icon}</div>
-      <h3>${product.name}</h3>
-      <p class="stock">${product.category} • estoque: ${product.stock}</p>
-      <p class="price">${formatMoney(product.price)}</p>
-      <button class="btn btn-primary" type="button">Adicionar 🛒</button>`;
-    card.querySelector("button").addEventListener("click", () => addToCart(product.id));
-    productGrid.appendChild(card);
-  });
+  filteredList.forEach((product) => productGrid.appendChild(productCard(product)));
 }
-
 function saveCart() {
   localStorage.setItem("ci_cart", JSON.stringify(cartItems));
   renderCart();
 }
-
 function addToCart(productId) {
   const foundItem = cartItems.find((item) => item.id === productId);
   if (foundItem) foundItem.quantity++;
@@ -68,7 +106,6 @@ function addToCart(productId) {
   saveCart();
   openCart();
 }
-
 function renderCart() {
   const itemsBox = getById("cart-items");
   const countBadge = getById("cart-count");
@@ -83,9 +120,9 @@ function renderCart() {
     totalCount += item.quantity;
     const row = document.createElement("div");
     row.className = "cart-item";
-    row.innerHTML = `
-      <div><strong>${product.icon} ${product.name}</strong><br/><span class="stock">${formatMoney(product.price)} x ${item.quantity}</span></div>
-      <div><button type="button">✕</button></div>`;
+    row.innerHTML =
+      '<div><strong>' + product.icon + ' ' + product.name + '</strong><br/><span class="stock">' + formatMoney(product.price) + ' x ' + item.quantity + '</span></div>' +
+      '<div><button type="button">✕</button></div>';
     row.querySelector("button").addEventListener("click", () => {
       cartItems = cartItems.filter((entry) => entry.id !== item.id);
       saveCart();
@@ -96,7 +133,6 @@ function renderCart() {
   countBadge.textContent = totalCount;
   totalLabel.textContent = formatMoney(totalPrice);
 }
-
 function openCart() {
   if (!cartPanel || !pageOverlay) return;
   cartPanel.classList.add("open");
@@ -107,16 +143,10 @@ function closeCart() {
   cartPanel.classList.remove("open");
   pageOverlay.classList.add("hidden");
 }
-
 function sendWhatsApp(message) {
-  if (!WHATSAPP_NUMBER) {
-    alert("Ainda sem número de WhatsApp. Adicione WHATSAPP_NUMBER em assets/app.js");
-    return;
-  }
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
+  if (!WHATSAPP_NUMBER) return;
+  window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank");
 }
-
-// Events (only if element exists on current page)
 document.querySelectorAll("#filters .chip").forEach((filterButton) => {
   filterButton.addEventListener("click", () => {
     document.querySelectorAll("#filters .chip").forEach((btn) => btn.classList.remove("active"));
@@ -126,34 +156,28 @@ document.querySelectorAll("#filters .chip").forEach((filterButton) => {
   });
 });
 if (searchInput) searchInput.addEventListener("input", (event) => { searchQuery = event.target.value; renderProducts(); });
-
 if (getById("btn-cart")) getById("btn-cart").addEventListener("click", openCart);
 if (getById("btn-close-cart")) getById("btn-close-cart").addEventListener("click", closeCart);
 if (pageOverlay) pageOverlay.addEventListener("click", closeCart);
 if (getById("btn-clear")) getById("btn-clear").addEventListener("click", () => { cartItems = []; saveCart(); });
-
 if (getById("btn-order")) getById("btn-order").addEventListener("click", () => {
-  if (cartItems.length === 0) return alert("Carrinho vazio");
+  if (cartItems.length === 0) return;
   const orderLines = cartItems.map((item) => {
     const product = PRODUCTS.find((entry) => entry.id === item.id);
-    return `• ${product.name} x${item.quantity} = R$${product.price * item.quantity}`;
+    return "• " + product.name + " x" + item.quantity + " = R$" + (product.price * item.quantity);
   });
   const orderTotal = getById("cart-total").textContent;
-  sendWhatsApp(`Olá Central Informática, quero comprar:\n${orderLines.join("\n")}\nTotal: ${orderTotal}`);
+  sendWhatsApp("Olá Central Informática, quero comprar:\n" + orderLines.join("\n") + "\nTotal: " + orderTotal);
 });
-
 if (getById("quote-form")) getById("quote-form").addEventListener("submit", (event) => {
   event.preventDefault();
   const customerName = getById("customer-name").value;
   const deviceType = getById("device-type").value;
   const issueDesc = getById("issue-desc").value;
-  sendWhatsApp(`Olá, sou ${customerName}. Tenho um(a) ${deviceType} com este defeito: ${issueDesc}. Pode me ajudar com orçamento?`);
+  sendWhatsApp("Olá, sou " + customerName + ". Tenho um(a) " + deviceType + " com este defeito: " + issueDesc + ". Pode me ajudar com orçamento?");
 });
-
 if (getById("btn-menu")) getById("btn-menu").addEventListener("click", () => {
   getById("nav").classList.toggle("open");
 });
-
-// Start (works on all 5 pages)
 renderProducts();
 renderCart();
