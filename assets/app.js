@@ -1,34 +1,34 @@
 const WHATSAPP_NUMBER = "5575981942021";
 const EMAIL_CONTACT = "contato@centralinformatica.com.br";
 const CATEGORY_LABELS = {
-  "pc-nuevo": "Componentes PC Nuevos",
+  "pc-novo": "Componentes PC Novos",
   "pc-usado": "Componentes PC Usados",
-  "cel-nuevo": "Celulares Nuevos",
+  "cel-novo": "Celulares Novos",
   "cel-usado": "Celulares Usados",
   "componentes": "Componentes",
   "notebooks": "Notebooks",
   "all": "Todos"
 };
 const PRODUCTS = [
-  { id: 1, name: "Memoria RAM 8GB DDR4 3200MHz Nueva", category: "pc-nuevo", condition: "nuevo", price: 650, stock: 10, icon: "💾" },
-  { id: 2, name: "SSD 480GB SATA Nuevo", category: "pc-nuevo", condition: "nuevo", price: 850, stock: 12, icon: "💽" },
-  { id: 3, name: "Placa RTX 3060 12GB Nueva", category: "pc-nuevo", condition: "nuevo", price: 7500, stock: 3, icon: "🎮" },
-  { id: 4, name: "Fuente 650W 80 Plus Nueva", category: "pc-nuevo", condition: "nuevo", price: 1200, stock: 6, icon: "🔌" },
-  { id: 5, name: "Placa Madre B550 Usada Testeada", category: "pc-usado", condition: "usado", price: 1800, stock: 2, icon: "🖥️" },
-  { id: 6, name: "GTX 1660 Super Usada con Garantia", category: "pc-usado", condition: "usado", price: 3200, stock: 2, icon: "🎮" },
+  { id: 1, name: "Memória RAM 8GB DDR4 3200MHz Nova", category: "pc-novo", condition: "novo", price: 650, stock: 10, icon: "💾" },
+  { id: 2, name: "SSD 480GB SATA Novo", category: "pc-novo", condition: "novo", price: 850, stock: 12, icon: "💽" },
+  { id: 3, name: "Placa RTX 3060 12GB Nova", category: "pc-novo", condition: "novo", price: 7500, stock: 3, icon: "🎮" },
+  { id: 4, name: "Fonte 650W 80 Plus Nova", category: "pc-novo", condition: "novo", price: 1200, stock: 6, icon: "🔌" },
+  { id: 5, name: "Placa-mãe B550 Usada Testada", category: "pc-usado", condition: "usado", price: 1800, stock: 2, icon: "🖥️" },
+  { id: 6, name: "GTX 1660 Super Usada com Garantia", category: "pc-usado", condition: "usado", price: 3200, stock: 2, icon: "🎮" },
   { id: 7, name: "Kit RAM 16GB DDR3 Usado", category: "pc-usado", condition: "usado", price: 450, stock: 5, icon: "💾" },
-  { id: 8, name: "Galaxy A32 Nuevo Sellado", category: "cel-nuevo", condition: "nuevo", price: 4500, stock: 4, icon: "📱" },
-  { id: 9, name: "iPhone 11 Nuevo", category: "cel-nuevo", condition: "nuevo", price: 9800, stock: 2, icon: "📱" },
-  { id: 10, name: "Cargador USB-C Nuevo", category: "cel-nuevo", condition: "nuevo", price: 250, stock: 20, icon: "🔗" },
-  { id: 11, name: "Galaxy S21 Usado Muy Buen Estado", category: "cel-usado", condition: "usado", price: 3200, stock: 3, icon: "📱" },
-  { id: 12, name: "iPhone XR Usado con Bateria Nueva", category: "cel-usado", condition: "usado", price: 3800, stock: 2, icon: "📱" },
-  { id: 13, name: "Tela iPhone 11 Repuesto", category: "cel-usado", condition: "usado", price: 900, stock: 5, icon: "📲" },
-  { id: 14, name: "Arduino UNO R3", category: "componentes", condition: "nuevo", price: 350, stock: 12, icon: "🔌" },
-  { id: 15, name: "Kit Resistores 600 pcs", category: "componentes", condition: "nuevo", price: 199, stock: 20, icon: "⚡" },
-  { id: 16, name: "Multimetro Digital", category: "componentes", condition: "nuevo", price: 350, stock: 11, icon: "📟" },
-  { id: 17, name: "Notebook i5 8GB/256GB Reacondicionado", category: "notebooks", condition: "usado", price: 6500, stock: 4, icon: "💻" },
-  { id: 18, name: "Notebook Gamer RTX 3050 Nuevo", category: "notebooks", condition: "nuevo", price: 15500, stock: 2, icon: "💻" },
-  { id: 19, name: "Macbook Air M1 Usado", category: "notebooks", condition: "usado", price: 18000, stock: 1, icon: "🍎" }
+  { id: 8, name: "Galaxy A32 Novo Lacrado", category: "cel-novo", condition: "novo", price: 4500, stock: 4, icon: "📱" },
+  { id: 9, name: "iPhone 11 Novo", category: "cel-novo", condition: "novo", price: 9800, stock: 2, icon: "📱" },
+  { id: 10, name: "Carregador USB-C Novo", category: "cel-novo", condition: "novo", price: 250, stock: 20, icon: "🔗" },
+  { id: 11, name: "Galaxy S21 Usado em Ótimo Estado", category: "cel-usado", condition: "usado", price: 3200, stock: 3, icon: "📱" },
+  { id: 12, name: "iPhone XR Usado com Bateria Nova", category: "cel-usado", condition: "usado", price: 3800, stock: 2, icon: "📱" },
+  { id: 13, name: "Tela iPhone 11 Reposição", category: "cel-usado", condition: "usado", price: 900, stock: 5, icon: "📲" },
+  { id: 14, name: "Arduino UNO R3", category: "componentes", condition: "novo", price: 350, stock: 12, icon: "🔌" },
+  { id: 15, name: "Kit Resistores 600 pcs", category: "componentes", condition: "novo", price: 199, stock: 20, icon: "⚡" },
+  { id: 16, name: "Multímetro Digital", category: "componentes", condition: "novo", price: 350, stock: 11, icon: "📟" },
+  { id: 17, name: "Notebook i5 8GB/256GB Recondicionado", category: "notebooks", condition: "usado", price: 6500, stock: 4, icon: "💻" },
+  { id: 18, name: "Notebook Gamer RTX 3050 Novo", category: "notebooks", condition: "novo", price: 15500, stock: 2, icon: "💻" },
+  { id: 19, name: "MacBook Air M1 Usado", category: "notebooks", condition: "usado", price: 18000, stock: 1, icon: "🍎" }
 ];
 let activeCategory = "all";
 let searchQuery = "";
@@ -44,7 +44,7 @@ const pageOverlay = getById("overlay");
 function formatMoney(value) { return "R$" + value.toLocaleString("pt-BR"); }
 function categoryLabel(key) { return CATEGORY_LABELS[key] || key; }
 function conditionTag(condition) {
-  if (condition === "nuevo") return '<span class="tag tag-nuevo">Nuevo</span>';
+  if (condition === "novo") return '<span class="tag tag-novo">Novo</span>';
   if (condition === "usado") return '<span class="tag tag-usado">Usado</span>';
   return "";
 }
@@ -78,7 +78,7 @@ function renderProducts() {
       if (list.length === 0) return;
       const section = document.createElement("div");
       section.className = "shop-section";
-      section.innerHTML = '<h3>' + categoryLabel(cat) + '</h3><p>' + list.length + ' productos</p>';
+      section.innerHTML = '<h3>' + categoryLabel(cat) + '</h3><p>' + list.length + ' produtos</p>';
       const grid = document.createElement("div");
       grid.className = "grid";
       list.forEach((product) => grid.appendChild(productCard(product)));
@@ -178,6 +178,12 @@ if (getById("quote-form")) getById("quote-form").addEventListener("submit", (eve
 });
 if (getById("btn-menu")) getById("btn-menu").addEventListener("click", () => {
   getById("nav").classList.toggle("open");
+});
+document.querySelectorAll(".nav a").forEach((link) => {
+  link.addEventListener("click", () => {
+    const nav = getById("nav");
+    if (nav) nav.classList.remove("open");
+  });
 });
 renderProducts();
 renderCart();
